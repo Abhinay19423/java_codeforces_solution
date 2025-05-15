@@ -6,21 +6,25 @@ public class Boredom {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		
-		int n = sc.nextInt();
+		int n = sc.nextInt(), maxi = Integer.MIN_VALUE;
+		long maxCount = 0;;
 		
-		int[] dp= new int[100001];
-		int[] a = new int[n];
+		long[] dp= new long[1000001]; 
+		long[] cnt = new long[1000001];// given a[i] <= 10 ^ 5
 		for(int i = 0; i<n; i++) {
-			int val = sc.nextInt();
-			dp[val] += 1;
-			a[i] = val;
+			int val  = sc.nextInt();
+			cnt[val] += 1;
+			maxi = maxi < val ? val : maxi;
 		}
 		
-		int value = 0;
+		dp[0] = 0; //base case 1
+		dp[1] = cnt[1];	//base case 2
 		
-		
-		
-		
+		for(int i = 2; i<= maxi; i++) {
+			dp[i] = Math.max(dp[i-1], cnt[i] * i + dp[i - 2]);
+			maxCount = maxCount < dp[i] ? dp[i] : maxCount;
+		}
+		System.out.println(maxCount);
 	}
 
 }
