@@ -25,10 +25,27 @@ public class Queen {
 				childrens[x].add(i);
 			}	
 		}
-		
+		List<Integer> ans = new ArrayList<>();
 		for(int i =0; i< n; i++) {
-			System.out.println(childrens[i]);
+//			System.out.println((i + 1) + " " + c[i] + " " + childrens[i]);
+			if(c[i] == 1) {
+				boolean pos = true;
+				for(int child : childrens[i]) {
+					if(c[child] == 0) {
+						pos = false;
+						break;
+					}
+				}
+				if(pos) {
+					ans.add(i + 1);
+				}
+			}
 		}
+		if(ans.size() > 0)
+			for(int val : ans)
+				System.out.print(val + " ");
+		else
+			System.out.println(-1);
 		
 		sc.close();
 	}
