@@ -43,7 +43,7 @@ public class AlsoTryMinecraft {
 			
 		}
 		
-		
+		sc.close();
 
 	}
 
